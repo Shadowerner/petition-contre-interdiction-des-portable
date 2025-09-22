@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function deleteSignature(button) {
         const signatureItem = button.parentElement;
-        const signatureText = signatureItem.querySelector('span').textContent;
         
         // Animation de suppression
         signatureItem.style.transform = 'translateX(-100%)';
@@ -179,39 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Fonctionnalité de téléchargement en PDF
-    document.getElementById('download-pdf').addEventListener('click', function() {
-        alert('Pour enregistrer en PDF : utilisez la fonction "Imprimer" de votre navigateur et choisissez "Enregistrer au format PDF" comme destination.');
-    });
-    
     // Rendre les fonctions accessibles globalement pour les événements onclick
     window.deleteSignature = deleteSignature;
 });
-
-// Fonction pour exporter les signatures en CSV (optionnel)
-function exportToCSV() {
-    const signatures = [];
-    const signatureItems = document.querySelectorAll('.signature-item span');
-    
-    signatureItems.forEach(item => {
-        signatures.push(item.textContent.trim());
-    });
-    
-    let csvContent = "Numéro,Nom,Classe\n";
-    signatures.forEach((signature, index) => {
-        const parts = signature.split(' - ');
-        const name = parts[0].replace(/^\d+\.\s*/, '').trim();
-        const studentClass = parts[1] || '';
-        csvContent += `${index + 1},"${name}","${studentClass}"\n`;
-    });
-    
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'signatures_petition.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
