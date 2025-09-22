@@ -184,31 +184,11 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Pour enregistrer en PDF : utilisez la fonction "Imprimer" de votre navigateur et choisissez "Enregistrer au format PDF" comme destination.');
     });
     
-    // Fonctionnalité de suppression de toutes les signatures
-    const clearBtn = document.createElement('button');
-    clearBtn.textContent = 'Effacer toutes les signatures';
-    clearBtn.className = 'btn-clear';
-    clearBtn.addEventListener('click', clearAllSignatures);
-    document.querySelector('.action-buttons').appendChild(clearBtn);
-    
-    function clearAllSignatures() {
-        if (confirm('Êtes-vous sûr de vouloir effacer toutes les signatures ? Cette action est irréversible.')) {
-            signaturesContainer.innerHTML = '';
-            if (noSignatures) {
-                noSignatures.style.display = 'block';
-            }
-            signatureCount = 0;
-            updateSignatureCount();
-            localStorage.removeItem('petitionSignatures');
-            localStorage.removeItem('signatureCount');
-        }
-    }
-    
     // Rendre les fonctions accessibles globalement pour les événements onclick
     window.deleteSignature = deleteSignature;
 });
 
-// Fonction pour exporter les signatures en CSV
+// Fonction pour exporter les signatures en CSV (optionnel)
 function exportToCSV() {
     const signatures = [];
     const signatureItems = document.querySelectorAll('.signature-item span');
