@@ -182,37 +182,6 @@ button:hover {
     background-color: #c0392b;
 }
 
-.action-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 15px;
-}
-
-.btn-print {
-    background-color: #27ae60;
-}
-
-.btn-print:hover {
-    background-color: #219a52;
-}
-
-.btn-download {
-    background-color: #2980b9;
-}
-
-.btn-download:hover {
-    background-color: #2471a3;
-}
-
-.btn-clear {
-    background-color: #e67e22;
-}
-
-.btn-clear:hover {
-    background-color: #d35400;
-}
-
 footer {
     text-align: center;
     margin-top: 30px;
@@ -240,14 +209,19 @@ footer {
     display: none;
 }
 
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+    display: none;
+}
+
 @media (max-width: 768px) {
     .arguments {
         grid-template-columns: 1fr;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-        gap: 10px;
     }
     
     .signature-item {
@@ -259,21 +233,5 @@ footer {
         margin-left: 0;
         margin-top: 5px;
         align-self: flex-end;
-    }
-}
-
-@media print {
-    .action-buttons, .delete-btn {
-        display: none;
-    }
-    
-    body {
-        background-color: white;
-        padding: 0;
-    }
-    
-    header {
-        border-radius: 0;
-        margin-bottom: 10px;
     }
 }
